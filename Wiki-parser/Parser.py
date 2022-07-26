@@ -2,17 +2,16 @@ import openpyxl
 import requests
 from bs4 import BeautifulSoup
 
-book = openpyxl.Workbook()
-sheet = book.active
-sheet['A1'] = 'Город'
-sheet['B1'] = 'Регион'
-sheet['C1'] = 'Федеральный округ'
-sheet['D1'] = 'Население'
-sheet['E1'] = 'Основание или первое упоминание'
-sheet['F1'] = 'Статус города'
-
-
 def parser():
+    book = openpyxl.Workbook()
+    sheet = book.active
+    sheet['A1'] = 'Город'
+    sheet['B1'] = 'Регион'
+    sheet['C1'] = 'Федеральный округ'
+    sheet['D1'] = 'Население'
+    sheet['E1'] = 'Основание или первое упоминание'
+    sheet['F1'] = 'Статус города'
+
     URL = 'https://ru.wikipedia.org/wiki/Список_городов_России'
     res = requests.get(URL).text
     soup = BeautifulSoup(res, "html.parser")
